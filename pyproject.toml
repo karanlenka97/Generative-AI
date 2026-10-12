@@ -1,0 +1,20 @@
+[project]
+name = "generative-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Karan Lenka", email = "karanlenka97@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "langchain>=1.4.2",
+    "langchain-google-genai>=4.4.0",
+]
+
+[project.scripts]
+generative-ai = "generative_ai:main"
+
+[build-system]
+requires = ["uv_build>=0.12.15,<0.13.0"]
+build-backend = "uv_build"
