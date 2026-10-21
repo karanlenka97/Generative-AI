@@ -14,8 +14,11 @@ chatbot = pipeline(
 conversation = [
     SystemMessage(
         content=(
-            "Answer briefly and directly. Use the conversation history "
-            "to remember details the user has shared."
+            "You are a friendly, concise assistant. Reply naturally to "
+            "greetings. Answer the user's latest message directly. Do not "
+            "summarize the conversation unless asked. Do not invent details "
+            "about the user or previous conversations. If you do not know "
+            "something, say so."
         )
     )
 ]
@@ -58,21 +61,29 @@ while True:
 
     conversation.append(HumanMessage(content=prompt))
 
-    recent_history = [conversation[0]] + conversation[1:][-12:]
+    recent_history = [conversation[0]] + conversation[1:][-8:]
     model_messages = to_transformers_messages(recent_history)
 
-    result = chatbot(
+    formatted_prompt = chatbot.tokenizer.apply_chat_template(
         model_messages,
-        max_new_tokens=80,
-        do_sample=True,
-        temperature=0.3,
-        top_p=0.9,
-        repetition_penalty=1.1,
+        tokenize=False,
+        add_generation_prompt=True,
     )
 
-    reply = result[0]["generated_text"][-1]["content"]
-    conversation.append(AIMessage(content=reply))
+    result = chatbot(
+        formatted_prompt,
+        max_new_tokens=80,
+        do_sample=False,
+        return_full_text=False,
+        eos_token_id=chatbot.tokenizer.eos_token_id,
+    )
 
+    reply = result[0]["generated_text"].strip()
+
+    for marker in ("<|user|>", "<|assistant|>", "</s>"):
+        reply = reply.split(marker, 1)[0].strip()
+
+    conversation.append(AIMessage(content=reply))
     print(f"{CYAN}TinyLlama › {RESET}{reply}\n")
 
 print("\nFull conversation:")
