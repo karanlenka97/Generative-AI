@@ -17,6 +17,7 @@ dependencies = [
     "transformers>=5.20.1",
     "torch>=2.14.1",
     "streamlit>=1.66.0",
+    "langchain-core>=1.6.12",
 ]
 
 [project.scripts]

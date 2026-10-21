@@ -410,6 +410,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "langchain", extra = ["huggingface"] },
+    { name = "langchain-core" },
     { name = "langchain-google-genai" },
     { name = "langchain-mistralai" },
     { name = "langchain-ollama" },
@@ -423,6 +424,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "langchain", extras = ["huggingface"], specifier = ">=1.4.2" },
+    { name = "langchain-core", specifier = ">=1.6.12" },
     { name = "langchain-google-genai", specifier = ">=4.4.0" },
     { name = "langchain-mistralai", specifier = ">=1.1.6" },
     { name = "langchain-ollama", specifier = ">=1.1.0" },
