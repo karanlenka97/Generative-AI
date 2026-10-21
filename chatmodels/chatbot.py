@@ -20,6 +20,7 @@ conversation = [
     )
 ]
 
+
 def to_transformers_messages(messages):
     converted = []
 
@@ -38,6 +39,12 @@ def to_transformers_messages(messages):
         )
 
     return converted
+
+
+print(f"\n{CYAN}╭────────────────────────────────────╮")
+print("│       TinyLlama Terminal Chat      │")
+print(f"╰────────────────────────────────────╯{RESET}")
+print(f"{YELLOW}Type 0 and press Enter to close.{RESET}\n")
 
 while True:
     prompt = input(f"{GREEN}You › {RESET}").strip()
@@ -67,3 +74,10 @@ while True:
     conversation.append(AIMessage(content=reply))
 
     print(f"{CYAN}TinyLlama › {RESET}{reply}\n")
+
+print("\nFull conversation:")
+for message in conversation[1:]:
+    if isinstance(message, HumanMessage):
+        print(f"You: {message.content}")
+    elif isinstance(message, AIMessage):
+        print(f"TinyLlama: {message.content}")
