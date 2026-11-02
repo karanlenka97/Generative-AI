@@ -15,3 +15,6 @@ model = ChatMistralAI(model="mistral-small-2506")
 
 # 3. Output Parser
 parser = StrOutputParser()
+
+
+chain = prompt | model | parser
