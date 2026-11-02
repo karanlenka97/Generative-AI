@@ -9,7 +9,6 @@ st.set_page_config(
     layout="wide",
 )
 
-
 @st.cache_resource
 def load_chatbot():
     return pipeline(
