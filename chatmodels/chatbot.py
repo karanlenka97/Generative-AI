@@ -44,6 +44,7 @@ def to_transformers_messages(messages):
     return converted
 
 
+
 print(f"\n{CYAN}╭────────────────────────────────────╮")
 print("│       TinyLlama Terminal Chat      │")
 print(f"╰────────────────────────────────────╯{RESET}")
