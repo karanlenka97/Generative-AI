@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from langchain.chat_models import init_chat_model
+from langchain.chat_models import init_chat_model #used init chat model to initialize the chat model
 
 model = init_chat_model("google_genai:gemini-3.5-flash-lite")
 
