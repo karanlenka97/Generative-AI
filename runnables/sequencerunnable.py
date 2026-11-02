@@ -9,3 +9,6 @@ from langchain_core.output_parsers import StrOutputParser
 prompt = ChatPromptTemplate.from_template(
     "Explain {topic} in simple words"
 )
+
+# 2. Model
+model = ChatMistralAI(model="mistral-small-2506")
