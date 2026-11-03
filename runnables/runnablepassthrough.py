@@ -27,3 +27,10 @@ seq2 = RunnableParallel(
      "explanation" : explain_prompt | model | parser
     }
 )
+
+chain = seq | seq2
+
+result = chain.invoke({"topic" : "please write a code of palindrome in python "})
+
+print(result['code'])
+print(result['explanation'])
