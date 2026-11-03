@@ -9,3 +9,12 @@ from langchain_core.runnables import RunnableParallel,RunnableLambda
 # Components
 model = ChatMistralAI(model="mistral-small-2506")
 parser = StrOutputParser()
+
+# Two different prompts
+short_prompt = ChatPromptTemplate.from_template(
+    "Explain {topic} in 1-2 lines"
+)
+
+detailed_prompt = ChatPromptTemplate.from_template(
+    "Explain {topic} in detail"
+)
