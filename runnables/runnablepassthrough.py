@@ -18,3 +18,12 @@ explain_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant who explains code in simple terms"),
     ("human", "Explain the following code in simple words:\n{code}")
 ])
+
+seq = code_prompt | model | parser 
+
+
+seq2 = RunnableParallel(
+    {"code" :  RunnablePassthrough(),
+     "explanation" : explain_prompt | model | parser
+    }
+)
