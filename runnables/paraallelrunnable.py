@@ -19,6 +19,7 @@ detailed_prompt = ChatPromptTemplate.from_template(
     "Explain {topic} in detail"
 )
 
+
 # Input
 topic = "Machine Learning"
 
