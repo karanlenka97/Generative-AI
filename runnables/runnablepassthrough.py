@@ -19,6 +19,7 @@ explain_prompt = ChatPromptTemplate.from_messages([
     ("human", "Explain the following code in simple words:\n{code}")
 ])
 
+
 seq = code_prompt | model | parser 
 
 
