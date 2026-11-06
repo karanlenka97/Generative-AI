@@ -24,11 +24,15 @@ detailed_prompt = ChatPromptTemplate.from_template(
 # Input
 topic = "Machine Learning"
 
+# Run both explanation chains concurrently.
+# Each branch selects its own input, formats the prompt, calls the model,
+# and converts the response to a string.
 chain = RunnableParallel({
     "short" :RunnableLambda(lambda x :x['short']) |short_prompt | model | parser ,
     "detailed" :RunnableLambda(lambda x: x['detailed']) |detailed_prompt |model |parser
 })
 
+# Provide a different topic to each branch and invoke them in parallel.
 result = chain.invoke({
     "short" : {"topic":"Machine Learning"},
     "detailed" : {"topic":"Deep Learning"}
