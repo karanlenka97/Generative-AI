@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
+# Load API credentials and other configuration from the .env file.
 
 from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import ChatPromptTemplate
