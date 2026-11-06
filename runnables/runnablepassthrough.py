@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
+# Load API credentials and other configuration from the .env file.
 
 from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import ChatPromptTemplate
@@ -9,6 +10,7 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 model = ChatMistralAI(model="mistral-small-2506")
 parser = StrOutputParser()
 
+# Ask the model to generate code for the requested topic.
 code_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a code generator"),
     ("human", "{topic}")
