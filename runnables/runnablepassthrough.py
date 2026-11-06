@@ -16,13 +16,17 @@ code_prompt = ChatPromptTemplate.from_messages([
     ("human", "{topic}")
 ])
 
+# Ask the model to explain generated code in simple terms.
 explain_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant who explains code in simple terms"),
     ("human", "Explain the following code in simple words:\n{code}")
 ])
 
+# Generate code from the user's request.
 seq = code_prompt | model | parser 
 
+# Preserve the generated code and pass it to the explanation prompt.
+# The lambda converts the code string into the mapping expected by that prompt.
 seq2 = RunnableParallel(
     {"code" :  RunnablePassthrough(),
      "explanation" : explain_prompt | model | parser
@@ -31,6 +35,7 @@ seq2 = RunnableParallel(
 
 chain = seq | seq2
 
+# Generate the code, then produce its explanation.
 result = chain.invoke({"topic" : "please write a code of palindrome in python "})
 
 print(result['code'])
