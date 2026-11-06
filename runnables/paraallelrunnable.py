@@ -7,11 +7,11 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnableParallel,RunnableLambda
 
-# Components
+# Initialize the model and a parser that returns plain text.
 model = ChatMistralAI(model="mistral-small-2506")
 parser = StrOutputParser()
 
-# Two different prompts
+# Define separate prompts for concise and detailed explanations.
 short_prompt = ChatPromptTemplate.from_template(
     "Explain {topic} in 1-2 lines"
 )
