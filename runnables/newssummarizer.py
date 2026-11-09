@@ -9,7 +9,7 @@ search_tool = TavilySearchResults(
     max_results=5,
 )
 
-llm = ChatOllama(model="qwen:3b",temperature = 0.1)
+llm = ChatOllama(model="qwen3:8b",temperature = 0.1)
 
 prompt = ChatPromptTemplate.from_template(
     """
