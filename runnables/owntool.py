@@ -6,7 +6,7 @@ def get_greeting(name : str) -> str: #type hints
 
     return f"Hello {name}, Welcome to the AI world"
 
-result = get_greeting.invoke({"name":"akarsh"})
+result = get_greeting.invoke({"name":"karan"})
 print(result)
 
 print(get_greeting.name)
