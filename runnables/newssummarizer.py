@@ -21,3 +21,9 @@ summarize the following news into clear bullet points
 )
 
 chain = prompt | llm | StrOutputParser()
+
+news_result = search_tool.run("Latest news about AI") 
+
+result = chain.invoke({"news":news_result})
+
+print(result)
