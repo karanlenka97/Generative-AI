@@ -20,3 +20,4 @@ summarize the following news into clear bullet points
 """
 )
 
+chain = prompt | llm | StrOutputParser()
