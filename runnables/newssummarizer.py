@@ -9,4 +9,14 @@ search_tool = TavilySearchResults(
     max_results=5,
 )
 
-llm = ChatOllama(model="ollama-news-summarizer", base_url="http://localhost:11434")
+llm = ChatOllama(model="qwen:3b",temperature = 0.1)
+
+prompt = ChatPromptTemplate.from_template(
+    """
+You are a helpful assistant
+
+summarize the following news into clear bullet points
+{news}
+"""
+)
+
