@@ -5,5 +5,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.chat_models import ChatOllama
 
-llm = ChatOllama(model="ollama-news-summarizer", base_url="http://localhost:11434")
+search_tool = TavilySearchResults(
+    max_results=5,
+)
 
+llm = ChatOllama(model="ollama-news-summarizer", base_url="http://localhost:11434")
