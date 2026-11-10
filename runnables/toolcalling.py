@@ -14,3 +14,8 @@ def get_text_length(text: str) -> int:
 
 llm = ChatOllama(model="qwen3:8b")
 
+#2 Tool binding with LLM
+llm_with_tool = llm.bind_tools([get_text_length])
+
+result = llm_with_tool.invoke({"input":"Hello, how are you?"})
+print(result.content)
