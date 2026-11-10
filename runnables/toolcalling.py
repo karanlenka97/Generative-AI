@@ -5,6 +5,7 @@ from langchain_mistralai import ChatMistralAI
 from langchain.tools import tool
 from langchain_ollama import ChatOllama
 from rich import print
+from langchain_core.messages import HumanMessage
 
 #1 creating a tool
 @tool
@@ -17,10 +18,6 @@ llm = ChatOllama(model="qwen3:8b")
 #2 Tool binding with LLM
 llm_with_tool = llm.bind_tools([get_text_length])
 
-# result = llm.invoke({"input":"Hello, how are you?"})
-result2 = llm_with_tool.invoke({"input":"Hello, how are you? Please tell me the length of this text."})
-# print(result.content)
-# print()
-# print()
-# print()
-print(result2.content)
+message = []
+query = HumanMessage("Please tell me the length of the following text: 'Hello, this is a sample text for testing the tool binding with LLM.'")
+print(message)
