@@ -18,6 +18,8 @@ dependencies = [
     "torch>=2.14.1",
     "streamlit>=1.66.0",
     "langchain-core>=1.6.12",
+    "langchain-community>=0.4.2",
+    "tavily-python>=0.8.5",
 ]
 
 [project.scripts]
